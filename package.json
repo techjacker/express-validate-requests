@@ -1,6 +1,6 @@
 {
   "name": "express-validate-requests",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "methods to validate and sanatise requests in express.js",
   "main": "index.js",
   "scripts": {

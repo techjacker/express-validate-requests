@@ -17,7 +17,7 @@ var allowedHosts = ["api.domainx.com", "www.domainx.com"],
 	},
 	opts = {
 		originSecret: "magicWord",
-		checkReferer: false
+		dontCheckReferer: true
 	};
 
 test('X Origin - Check Host', function(t) {
