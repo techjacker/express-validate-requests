@@ -1,0 +1,29 @@
+{
+  "name": "express-validate-requests",
+  "version": "0.1.0",
+  "description": "methods to validate and sanatise requests in express.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap ./test"
+  },
+  "repository": "git@github.com:techjacker/express-validate-requests.git",
+  "keywords": [
+    "express.js",
+    "sanatize",
+    "validate",
+    "cors",
+    "x-origin",
+    "cross-origin",
+    "express"
+  ],
+  "author": "andrew griffiths",
+  "license": "MIT",
+  "devDependencies": {
+    "tap": "~0.4.1"
+  },
+  "dependencies": {
+    "underscore": "~1.4.4",
+    "custom-errors": "~1.2.0",
+    "validator": "~0.5.0"
+  }
+}
