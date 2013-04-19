@@ -2,7 +2,7 @@ var _ 	 = require('underscore'),
 	test = require('tap').test,
 	main = require('./../lib/main');
 
-test('ValidationError', function(t) {
+test('Main.js exports tests', function(t) {
 
 	// helpers
 	t.ok(_.isFunction(main.helpers.checkGotAllParams), 'checkGotAllParams fn is exposed');
