@@ -4,9 +4,15 @@ var test     = require('tap').test,
     xOrigin  = require('./../../lib/middleware/allow-cross-origin-requests.js'),
     Forbidden = require('custom-errors').request.Forbidden;
 
-var allowedHosts = ["api.domainx.com", "www.domainx.com"],
+
+
+var jsonReq = true,
+	allowedHosts = ["api.domainx.com", "www.domainx.com"],
 	allowedOrigins = ["http://domainx.com", "http://www.domainx.com"],
 	req = {
+		is: function () {
+			return jsonReq;
+		},
 		headers: {
 			origin: "http://www.domainx.com",
 			referer: "www.domainx.com"
@@ -27,6 +33,21 @@ test('X Origin - Check Host', function(t) {
 	t.ok(xOrigin.checkHost('www.domainx.com', allowedHosts), 'host is allowed');
 	t.end();
 });
+
+test('X Origin - validateHostsOrigins - jsonP requests', function(t) {
+
+    var val = xOrigin.validateHostsOrigins;
+	req.headers.origin = 'http://www.hack.io';
+
+	// shd pass because jsonP
+	jsonReq = false;
+	t.ok(val(req, allowedHosts, allowedOrigins), 'jsonp request without origin allowed');
+	jsonReq = true;
+	req.headers.origin = "http://www.domainx.com";
+	t.end();
+});
+
+
 
 test('X Origin - validateHostsOrigins', function(t) {
 
