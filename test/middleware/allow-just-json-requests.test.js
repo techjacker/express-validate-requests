@@ -1,12 +1,17 @@
-var _             = require('underscore'),
-    test          = require('tap').test,
-    justJson      = require('./../../lib/middleware/allow-just-json-requests.js'),
-    NotAcceptable = require('custom-errors').request.NotAcceptable; // my custom error classes
+var _              = require('underscore'),
+    test           = require('tap').test,
+    mod            = require('./../../lib/middleware/allow-just-json-requests.js'),
+    justJson       = mod.allowJustJsonRequests,
+    forbidHtmlText = mod.forbidHtmlText,
+    NotAcceptable  = require('custom-errors').request.NotAcceptable; // my custom error classes
 
 
 // test helpers
 var req = {
-	type: 'text'
+	type: 'text',
+	is: function (mimeType) {
+		mimeTypes[req.type]();
+	}
 };
 var res = {
 	format: function (mimeTypes) {
@@ -41,3 +46,31 @@ test('Just JSON tests', function(t) {
 	req.type = 'json';
 	justJson(req, res, next);
 });
+
+// test('forbidHtmlText tests', function(t) {
+
+// 	t.plan(4);
+
+// 	t.ok(_.isFunction(forbidHtmlText), 'forbidHtmlText is a fn');
+
+// 	var count = 0;
+// 	// test spy
+// 	var next = function (err) {
+// 		if (++count <= 2) {
+// 			t.ok(err instanceof NotAcceptable, 'not acceptable error passed as next arg')
+// 		} else {
+// 			t.notOk(err, 'error should be undefined for json requests')
+// 		}
+// 	};
+// 	// shd generate error
+// 	req.type = 'text';
+// 	forbidHtmlText(req, res, next);
+
+// 	// shd generate error
+// 	req.type = 'html';
+// 	forbidHtmlText(req, res, next);
+
+// 	// shd NOT generate error
+// 	req.type = 'json';
+// 	forbidHtmlText(req, res, next);
+// });
