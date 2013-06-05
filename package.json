@@ -1,13 +1,9 @@
 {
   "name": "express-validate-requests",
-  "version": "1.1.1",
+  "license": "MIT",
+  "version": "1.1.2",
   "description": "methods to validate and sanatise requests in express.js",
-  "main": "index.js",
-  "scripts": {
-    "test": "tap ./test"
-  },
-  "repository": "git@github.com:techjacker/express-validate-requests.git",
-  "keywords": [
+  "tags": [
     "express.js",
     "sanatize",
     "validate",
@@ -16,14 +12,27 @@
     "cross-origin",
     "express"
   ],
-  "author": "andrew griffiths",
-  "license": "MIT",
-  "devDependencies": {
-    "tap": "0.4.x"
+  "author": {
+    "name": "Andrew Griffiths",
+    "email": "mail@andrewgriffithsonline.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:techjacker/express-validate-requests.git"
+  },
+  "engines": [
+    "node >= 0.6.0"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "tap ./test"
   },
   "dependencies": {
-    "underscore": "1.4.x",
-    "custom-errors": "1.x",
-    "validator": "0.5.x"
+    "underscore": ">=1.4",
+    "custom-errors": ">=1.0",
+    "validator": ">=0.5"
+  },
+  "devDependencies": {
+    "tap": ">=0.4"
   }
 }
